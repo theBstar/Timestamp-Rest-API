@@ -4,7 +4,7 @@
 // init project
 var express = require('express');
 var app = express();
-
+const validate = require("validator")
 // enable CORS (https://en.wikipedia.org/wiki/Cross-origin_resource_sharing)
 // so that your API is remotely testable by FCC 
 var cors = require('cors');
@@ -22,9 +22,9 @@ app.get("/", function (req, res) {
 // your first API endpoint... 
 app.get("/api/timestamp/:date_string", function (req, res) {
   let inputDate = req.params.date_string;
-  let RegX = /^\d{4}-[0-11]-[1-31]$/
-  console.log(RegX.test(2012-1-12))
-  res.json();
+  if(validate.isISO8601(inputDate)){
+    console.log("ok")
+  }
 });
 
 
