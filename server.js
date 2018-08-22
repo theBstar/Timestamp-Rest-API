@@ -31,6 +31,11 @@ app.get("/api/timestamp/:date_string", function (req, res) {
     let d = new Date(inputDate)
     result.unix = d.getTime();
     result.utc = d.toUTCString();
+  }else {
+    if(!isNaN(Number(inputDate))){
+      result.unix = inputDate;
+      result.utc = new Date(Number(inputDate)).toUTCString();
+    }
   }
   res.json(result);
 });
