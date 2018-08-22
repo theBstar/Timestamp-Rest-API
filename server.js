@@ -21,8 +21,12 @@ app.get("/", function (req, res) {
 
 // your first API endpoint... 
 app.get("/api/timestamp/:date_string", function (req, res) {
-  
-  console.log(req.params.date_string)
+  let d = req.params.date_string;
+  let dArr = d.split("-").map(el=>Number(el));
+  let result = {"unix": null, "utc" : "Invalid Date" };
+  if(dArr.length==1 && !isNaN(dArr[)) {
+    
+  }
   res.json({greeting: 'hello API'});
 });
 
