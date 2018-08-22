@@ -23,7 +23,7 @@ app.get("/", function (req, res) {
 app.get("/api/timestamp/:date_string", function (req, res) {
   let inputDate = req.params.date_string;
   let RegX = /^\d{4}-[0-11]-[1-31]$/
-  console.log
+  console.log(RegX.test(2012-1-12))
   res.json();
 });
 
