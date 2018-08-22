@@ -23,11 +23,16 @@ app.get("/", function (req, res) {
 app.get("/api/timestamp/:date_string", function (req, res) {
   let inputDate = req.params.date_string;
   let result = {"unix": null, "utc" : "Invalid Date" };
-  if(validate.isISO8601(inputDate)){
-    let d = new D
+  if(!inputDate){
+    let d = new Date()
     result.unix = d.getTime()
+    result.utc = d.toUTCString();
+  }else if(validate.isISO8601(inputDate)){
+    let d = new Date(inputDate)
+    result.unix = d.getTime();
+    result.utc = d.toUTCString();
   }
-  res.json({ok: "ok"})
+  res.json(result);
 });
 
 
