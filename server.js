@@ -22,11 +22,13 @@ app.get("/", function (req, res) {
 // your first API endpoint... 
 app.get("/api/timestamp/:date_string", function (req, res) {
   let inputDate = req.params.date_string;
+  let result = {"unix": null, "utc" : "Invalid Date" };
   if(validate.isISO8601(inputDate)){
-    console.log("ok")
+    let d = new D
+    result.unix = d.getTime()
   }
+  res.json({ok: "ok"})
 });
-
 
 
 // listen for requests :)
